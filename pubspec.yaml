@@ -11,16 +11,19 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # git
-  bloc_component:
-    git:
-      url: git://github.com/shimaatech/bloc_component
-      ref: master
+  flutter_bloc: ^4.0.0
 
   flutter_notifications:
     git:
       url: git://github.com/shimaatech/flutter_notifications
       ref: master
+
+  flutter_base_bloc:
+    git:
+      url: git://github.com/shimaatech/flutter_base_bloc
+      ref: master
+
+
 
 dev_dependencies:
   flutter_test:

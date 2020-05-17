@@ -1,16 +1,10 @@
 import 'dart:async';
 
-import 'package:bloc_component/bloc_component.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_base_bloc/flutterbasebloc.dart';
 import 'package:flutter_notifications/flutternotifications.dart';
 
-class AppState extends BlocState {}
-
-class AppEvent extends BlocEvent {}
-
-abstract class BaseAppBloc extends BaseBloc {}
-
-class _NotificationEvent extends AppEvent {
+class _NotificationEvent extends BlocEvent {
   final NotificationMessage notification;
 
   _NotificationEvent(this.notification);
@@ -29,7 +23,7 @@ class _EventNotificationClicked extends _NotificationEvent {
       : super(notification);
 }
 
-class _NotificationState extends AppState {
+class _NotificationState extends BlocState {
   final NotificationMessage notification;
 
   _NotificationState(this.notification);
@@ -48,14 +42,14 @@ class StateNotificationClicked extends _NotificationState {
       : super(notification);
 }
 
-abstract class AppBlocWithNotifications extends BaseAppBloc {
+abstract class NotificationsBloc extends BaseBloc {
   @protected
   final NotificationsServices notificationsServices;
 
   StreamSubscription<NotificationMessage> _notificationReceivedSubscription;
   StreamSubscription<NotificationMessage> _notificationClickedSubscription;
 
-  AppBlocWithNotifications(this.notificationsServices) {
+  NotificationsBloc(this.notificationsServices) {
     _notificationReceivedSubscription =
         notificationsServices.onNotificationReceived.listen((message) {
       add(_EventNotificationReceived(message));

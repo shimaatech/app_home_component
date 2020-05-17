@@ -29,15 +29,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
-  bloc_component:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: master
-      resolved-ref: "689eb79ca8b06b9db9322f5962f9e4e931797541"
-      url: "git://github.com/shimaatech/bloc_component"
-    source: git
-    version: "0.1.8"
   boolean_selector:
     dependency: transitive
     description:
@@ -85,8 +76,17 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_base_bloc:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: master
+      resolved-ref: aa4abeb805a0de7473b82228d46f1f095c3b593c
+      url: "git://github.com/shimaatech/flutter_base_bloc"
+    source: git
+    version: "0.0.1"
   flutter_bloc:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
