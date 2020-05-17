@@ -42,7 +42,7 @@ class StateNotificationClicked extends _NotificationState {
       : super(notification);
 }
 
-abstract class NotificationsBloc extends BaseBloc {
+class NotificationsBloc extends BaseBloc {
   @protected
   final NotificationsServices notificationsServices;
 
