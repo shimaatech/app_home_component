@@ -8,6 +8,11 @@ import 'notifications_bloc.dart';
 abstract class BaseAppHome extends StatelessWidget {}
 
 abstract class AppHomeWithNotifications extends BaseAppHome {
+
+  final NotificationsBloc notificationsBloc;
+
+  AppHomeWithNotifications(this.notificationsBloc);
+
   void onNotificationReceived(BuildContext context, NotificationMessage notification) {}
 
   void onNotificationClicked(BuildContext context, NotificationMessage notification) {}
@@ -16,7 +21,7 @@ abstract class AppHomeWithNotifications extends BaseAppHome {
 
   Widget build(BuildContext context) {
     return BlocListener(
-      bloc: BlocProvider.of<NotificationsBloc>(context),
+      bloc: notificationsBloc,
       child: buildHomePage(context),
       listener: (context, state) {
         if (state is StateNotificationReceived) {
