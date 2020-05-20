@@ -9,9 +9,7 @@ abstract class BaseAppHome extends StatelessWidget {}
 
 abstract class AppHomeWithNotifications extends BaseAppHome {
 
-  final NotificationsBloc notificationsBloc;
-
-  AppHomeWithNotifications(this.notificationsBloc);
+  AppHomeWithNotifications();
 
   void onNotificationReceived(BuildContext context, NotificationMessage notification) {}
 
@@ -21,7 +19,7 @@ abstract class AppHomeWithNotifications extends BaseAppHome {
 
   Widget build(BuildContext context) {
     return BlocListener(
-      bloc: notificationsBloc,
+      bloc: notificationsBloc(context),
       child: buildHomePage(context),
       listener: (context, state) {
         if (state is StateNotificationReceived) {
@@ -32,5 +30,7 @@ abstract class AppHomeWithNotifications extends BaseAppHome {
       }
     );
   }
+
+  NotificationsBloc notificationsBloc(BuildContext context);
 
 }
