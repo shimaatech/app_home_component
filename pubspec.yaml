@@ -12,15 +12,11 @@ dependencies:
     sdk: flutter
 
   flutter_bloc: ^4.0.0
+  equatable: ^1.1.1
 
   flutter_notifications:
     git:
       url: git://github.com/shimaatech/flutter_notifications
-      ref: master
-
-  flutter_base_bloc:
-    git:
-      url: git://github.com/shimaatech/flutter_base_bloc
       ref: master
 
 

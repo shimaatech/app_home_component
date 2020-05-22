@@ -65,7 +65,7 @@ packages:
     source: hosted
     version: "2.1.4"
   equatable:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: equatable
       url: "https://pub.dartlang.org"
@@ -76,15 +76,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_base_bloc:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: master
-      resolved-ref: aa4abeb805a0de7473b82228d46f1f095c3b593c
-      url: "git://github.com/shimaatech/flutter_base_bloc"
-    source: git
-    version: "0.0.1"
   flutter_bloc:
     dependency: "direct main"
     description:
