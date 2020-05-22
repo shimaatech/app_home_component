@@ -5,22 +5,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_notifications/flutternotifications.dart';
 
-class _NotificationEvent extends Equatable {
+class NotificationEvent extends Equatable {
   final NotificationMessage notification;
 
-  _NotificationEvent(this.notification);
+  NotificationEvent(this.notification);
 
   @override
   List<Object> get props => [notification];
 }
 
-class _NotificationEventReceived extends _NotificationEvent {
-  _NotificationEventReceived(NotificationMessage notification)
+class NotificationEventReceived extends NotificationEvent {
+  NotificationEventReceived(NotificationMessage notification)
       : super(notification);
 }
 
-class _NotificationEventClicked extends _NotificationEvent {
-  _NotificationEventClicked(NotificationMessage notification)
+class NotificationEventClicked extends NotificationEvent {
+  NotificationEventClicked(NotificationMessage notification)
       : super(notification);
 }
 
@@ -51,7 +51,7 @@ class NotificationStateClicked extends _NotificationStateData {
       : super(notification);
 }
 
-class NotificationBloc extends Bloc<_NotificationEvent, NotificationState> {
+class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   @protected
   final NotificationsServices notificationsServices;
 
@@ -61,12 +61,12 @@ class NotificationBloc extends Bloc<_NotificationEvent, NotificationState> {
   NotificationBloc(this.notificationsServices) {
     _notificationReceivedSubscription =
         notificationsServices.onNotificationReceived.listen((message) {
-      add(_NotificationEventReceived(message));
+      add(NotificationEventReceived(message));
     });
 
     _notificationClickedSubscription =
         notificationsServices.onNotificationClicked.listen((message) {
-      add(_NotificationEventClicked(message));
+      add(NotificationEventClicked(message));
     });
   }
   
@@ -81,10 +81,10 @@ class NotificationBloc extends Bloc<_NotificationEvent, NotificationState> {
   NotificationState get initialState => NotificationStateInitial();
 
   @override
-  Stream<NotificationState> mapEventToState(_NotificationEvent event) async* {
-    if (event is _NotificationEventReceived) {
+  Stream<NotificationState> mapEventToState(NotificationEvent event) async* {
+    if (event is NotificationEventReceived) {
       yield (NotificationStateReceived(event.notification));
-    } else if (event is _NotificationEventClicked) {
+    } else if (event is NotificationEventClicked) {
       yield NotificationStateClicked(event.notification);
     }
   }
